@@ -1,4 +1,4 @@
-#! /usr/bin/env python3
+# ! /usr/bin/env python3
 
 
 class Product:
@@ -10,7 +10,7 @@ class Product:
 
 class ProductList:
     """ A class for managing a list of products """
-    
+
     def __init__(self):
         self.plist = []
 
@@ -23,4 +23,4 @@ class ProductList:
 
     def get_list(self):
         return self.plist
-        
+
