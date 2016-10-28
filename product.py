@@ -32,7 +32,7 @@ class ProductList:
         return self.plist
     
     def get_product(self, name):
-        return self.contains(name):
+        return self.contains(name)
     
     def contains(self, name):
         for product in self.plist:
