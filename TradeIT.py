@@ -8,7 +8,7 @@ import city
 
 def main():
     product_list = product.ProductList()
-    city_list = name.CityList()
+    city_list = city.CityList()
     
 
 
