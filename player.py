@@ -33,5 +33,5 @@ class Player:
         self.inventory.add_product(prod, amount)
 
     def remove_product(self, prod, amount):
-        self.inventory.get_product_amount(prod.name)
-        self.inventory.set_product_amount(prod.name, amount = amount - )
+        amount = self.inventory.get_product_amount(prod.name) - amount
+        self.inventory.set_product_amount(prod.name, amount)
