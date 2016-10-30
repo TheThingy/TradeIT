@@ -32,6 +32,7 @@ print(a.hello)
 
 # Print "hi world"
 a.bar("world")
+Foo.bar(a, "world") # This is the same
 
 
 # Foo does not need to be initialized to use its functions
