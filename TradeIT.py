@@ -22,7 +22,7 @@ class Game:
             temp = City(cty)
             self.city_list.add_city(temp)
        
-        self.player = Player("Per", self.city_list.get_list()[0])
+        self.player = Player("Per", self.city_list.get_city("Tromsø"))
         
     
     
@@ -36,6 +36,11 @@ class Game:
     def decode_command(self, command):
         command_list = command.split()
         
+        if command_list[0] == "goto":
+            if len(command_list) < 2:
+                print("Error! Please specify city to go to.")
+                return
+            self.player.set_location(self.city_list.get_city(command_list[1]))
         if command_list[0] == "info":
             print("Name: %s" %(self.player.name))
             print("Money: %i" %(self.player.money))
@@ -43,7 +48,7 @@ class Game:
         elif command_list[0] == "exit":
             print("Quitting")
             sys.exit()
-        if command_list[0] == "help":
+        elif command_list[0] == "help":
             if len(command_list) == 1:
                 print("Available commands:")
                 print("info")
