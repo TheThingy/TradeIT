@@ -15,5 +15,8 @@ class CityList:
         if name in self.clist:
             del self.clist[name]
 
+    def get_city(self, name):
+        return self.clist[name]
+
     def get_list(self):
         return self.clist
