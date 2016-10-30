@@ -21,7 +21,10 @@ class Player:
         return self.inventory
 
     def get_money(self):
+        return self.money
 
+    def set_money(self, amount):
+        self.money = amount
 
     def get_loan(self):
         return self.loan
