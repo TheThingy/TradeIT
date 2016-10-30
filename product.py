@@ -14,7 +14,7 @@ class ProductList:
     def __init__(self):
         self.plist = {}
 
-    def add_product(self, product, amount=0):   
+    def add_product(self, product, amount=1):   
         if self.contains(product.name):
             amount += self.plist[product.name][1]     
         self.plist[product.name] = [product, amount] # Every product has a counter
