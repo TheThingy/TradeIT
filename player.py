@@ -25,8 +25,8 @@ class Player:
     def set_loan(self, loan):
         self.loan = loan
 
-    def add_prod(self, product, amount):
-        self.inventory.add_product(product, amount)
+    def add_product(self, prod, amount):
+        self.inventory.add_product(prod, amount)
 
 
-    def remove_prod(self, amount):
+    def remove_product(self, amount):
