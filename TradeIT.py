@@ -43,8 +43,15 @@ class Game:
         elif command_list[0] == "exit":
             print("Quitting")
             sys.exit()
-        
-    
+        if command_list[0] == "help":
+            print("Available commands:")
+            print("info")
+            print("exit")
+            if command_list[1] == "info":
+                print("Shows information about your character")
+            if command_list[1] == "exit":
+                print("Exits the game")
+
     def mainloop(self):
         while True:
             self.decode_command(self.get_input())

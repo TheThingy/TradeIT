@@ -8,3 +8,4 @@ class Player:
         self.position = city
         self.money = 0
         self.inventory = product.ProductList()
+        self.loan = 0
