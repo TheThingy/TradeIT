@@ -2,6 +2,7 @@
 
 import product
 
+
 class Player:
     def __init__(self, name, city):
         self.name = name
@@ -28,5 +29,5 @@ class Player:
     def add_product(self, prod, amount):
         self.inventory.add_product(prod, amount)
 
-
-    def remove_product(self, amount):
+    def remove_product(self, prod, amount):
+        self.inventory.set_product_amount(prod, amount)
