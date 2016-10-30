@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 
 import json
+import sys
 
 from product import Product, ProductList
 from city import City, CityList
@@ -8,27 +9,45 @@ from player import Player
 
 
 class Game:
-    def __init__():
+    def __init__(self):
         self.product_list = ProductList()
         self.city_list = CityList()
-        self.player = Player()
         
         # Load JSON files
-        for prod in json.loads(open("products.json", 'r', encoding="utf8").read()):
+        for prod in json.loads(open("data/products.json", 'r', encoding="utf8").read()):
             temp = Product(prod)
-            product_list.add_product(temp)
+            self.product_list.add_product(temp)
         
-        for cty in json.loads(open("cities.json", 'r', encoding="utf8").read()):
+        for cty in json.loads(open("data/cities.json", 'r', encoding="utf8").read()):
             temp = City(cty)
-            city_list.add_city(temp)
+            self.city_list.add_city(temp)
+       
+        self.player = Player("Per", self.city_list.get_list()[0])
         
     
     
-    def get_input():
-        return input(self.player.position + "$")
+    def get_input(self):
+        promt = str(self.player.name)
+        promt += "@"
+        promt += str(self.player.position.city_name)
+        promt += "$ "
+        return input(promt)
+    
+    def decode_command(self, command):
+        command_list = command.split()
+        
+        if command_list[0] == "info":
+            print("Name: %s" %(self.player.name))
+            print("Money: %i" %(self.player.money))
+            print("Location: %s" %(self.player.position.city_name))
+        elif command_list[0] == "exit":
+            print("Quitting")
+            sys.exit()
+        
     
     def mainloop(self):
-        pass
+        while True:
+            self.decode_command(self.get_input())
 
 
 
