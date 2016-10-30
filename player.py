@@ -10,10 +10,10 @@ class Player:
         self.inventory = product.ProductList()
         self.loan = 0
 
-    def get_position(self):
+    def get_location(self):
         return self.location
 
-    def set_position(self, location):
+    def set_location(self, location):
         self.location = location
 
     def get_inventory(self):
