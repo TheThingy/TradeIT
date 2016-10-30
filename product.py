@@ -14,11 +14,11 @@ class ProductList:
     def __init__(self):
         self.plist = {}
 
-    def add_product(self, product):
+    def add_product(self, product, amount=0):
         if self.contains(product.name):
-            return False
+            product = self.get_product(product.name)
         
-        self.plist[product.name] = [product, 1] # Every product has a counter
+        self.plist[product.name] = [product, amount] # Every product has a counter
         return True
 
     def remove_product(self, product):
