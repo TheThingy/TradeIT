@@ -6,14 +6,14 @@ class City:
 
 class CityList:
     def __init__(self):
-        self.clist = []
+        self.clist = {}
 
     def add_city(self, name):
-        self.clist.append(name)
+        self.clist[name] = City(name)
 
     def remove_city(self, name):
         if name in self.clist:
-            self.clist.remove(name)
+            del self.clist[name]
 
     def get_list(self):
         return self.clist
