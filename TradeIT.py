@@ -53,11 +53,16 @@ class Game:
                 print("Available commands:")
                 print("info")
                 print("exit")
+                print("goto")
             elif len(command_list) > 1:
                 if command_list[1] == "info":
                     print("Shows information about your character")
                 if command_list[1] == "exit":
                     print("Exits the game")
+                if command_list[1] == "goto":
+                    print("Usage: goto [city]")
+                    print("Will transport the player to [city]")
+                    
 
     def mainloop(self):
         while True:
