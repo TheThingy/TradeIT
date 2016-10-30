@@ -47,10 +47,11 @@ class Game:
             print("Available commands:")
             print("info")
             print("exit")
-            if command_list[1] == "info":
-                print("Shows information about your character")
-            if command_list[1] == "exit":
-                print("Exits the game")
+            if len(command_list) > 1:
+                if command_list[1] == "info":
+                    print("Shows information about your character")
+                if command_list[1] == "exit":
+                    print("Exits the game")
 
     def mainloop(self):
         while True:
