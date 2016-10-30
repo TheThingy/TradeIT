@@ -44,10 +44,11 @@ class Game:
             print("Quitting")
             sys.exit()
         if command_list[0] == "help":
-            print("Available commands:")
-            print("info")
-            print("exit")
-            if len(command_list) > 1:
+            if len(command_list) == 1:
+                print("Available commands:")
+                print("info")
+                print("exit")
+            elif len(command_list) > 1:
                 if command_list[1] == "info":
                     print("Shows information about your character")
                 if command_list[1] == "exit":
