@@ -12,5 +12,5 @@ for product_name in ["product1", "product2", "product3", "product4"]:
 
 
 for prd in product_list.get_list():
-    print(prd.name)
+    print(prd)
 

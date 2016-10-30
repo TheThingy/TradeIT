@@ -12,18 +12,18 @@ class ProductList:
     """ A class for managing a list of products """
 
     def __init__(self):
-        self.plist = []
+        self.plist = {}
 
     def add_product(self, product):
         if self.contains(product.name):
             return False
         
-        self.plist.append(product)
+        self.plist[product.name] = product
         return True
 
     def remove_product(self, product):
-        if product in self.plist:
-            self.plist.remove(product)
+        if self.contains(product.name):
+            del self.plist[product.name]
             return True
         
         return False
@@ -32,12 +32,8 @@ class ProductList:
         return self.plist
     
     def get_product(self, name):
-        return self.contains(name)
+        return self.plist[name]
     
     def contains(self, name):
-        for product in self.plist:
-            if name == product.name:
-                return product
-        
-        return False
+        return name in self.plist # Return True if (name in self.plist), False otherwise
 
