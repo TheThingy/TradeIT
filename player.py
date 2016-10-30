@@ -19,11 +19,13 @@ class Player:
     def get_inventory(self):
         return self.inventory
 
-    def set_inventory(self, inventory):
-        self.inventory = inventory
-
     def get_loan(self):
         return self.loan
 
     def set_loan(self, loan):
         self.loan = loan
+
+    def add_prod(self, amount, product):
+        self.add_prod = self.add_product(product, amount)
+
+    def remove_prod(self, amount):
