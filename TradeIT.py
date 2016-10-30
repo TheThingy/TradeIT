@@ -29,7 +29,7 @@ class Game:
     def get_input(self):
         promt = str(self.player.name)
         promt += "@"
-        promt += str(self.player.position.city_name)
+        promt += str(self.player.location.city_name)
         promt += "$ "
         return input(promt)
     
@@ -39,7 +39,7 @@ class Game:
         if command_list[0] == "info":
             print("Name: %s" %(self.player.name))
             print("Money: %i" %(self.player.money))
-            print("Location: %s" %(self.player.position.city_name))
+            print("Location: %s" %(self.player.location.city_name))
         elif command_list[0] == "exit":
             print("Quitting")
             sys.exit()
