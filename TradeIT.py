@@ -2,25 +2,27 @@
 
 import json
 
-import product
-import city
-
+from product import Product, ProductList
+from city import City, CityList
+from player import Player
 
 
 
 
 def main():
-    product_list = product.ProductList()
-    city_list = city.CityList()
+    product_list = ProductList()
+    city_list = CityList()
+    player = Player()
     
     # Load JSON files
     for prod in json.loads(open("products.json", 'r', encoding="utf8").read()):
-        temp = product.Product(prod)
+        temp = Product(prod)
         product_list.add_product(temp)
     
     for cty in json.loads(open("cities.json", 'r', encoding="utf8").read()):
-        temp = city.City(cty)
+        temp = City(cty)
         city_list.add_city(temp)
+    
     
 
 
