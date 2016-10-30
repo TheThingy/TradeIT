@@ -8,8 +8,8 @@ class CityList:
     def __init__(self):
         self.clist = {}
 
-    def add_city(self, name):
-        self.clist[name] = City(name)
+    def add_city(self, city):
+        self.clist[city.city_name] = city
 
     def remove_city(self, name):
         if name in self.clist:
