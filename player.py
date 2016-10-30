@@ -20,6 +20,9 @@ class Player:
     def get_inventory(self):
         return self.inventory
 
+    def get_money(self):
+
+
     def get_loan(self):
         return self.loan
 
@@ -30,4 +33,5 @@ class Player:
         self.inventory.add_product(prod, amount)
 
     def remove_product(self, prod, amount):
-        self.inventory.set_product_amount(prod, amount)
+        self.inventory.get_product_amount(prod.name)
+        self.inventory.set_product_amount(prod.name, amount = amount - )
