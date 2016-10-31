@@ -1,6 +1,7 @@
 # ! /usr/bin/env python3
 
 import product
+import economy
 
 
 class Player:
@@ -9,7 +10,7 @@ class Player:
         self.location = city
         self.money = 0
         self.inventory = product.ProductList()
-        self.loan = 0
+        self.loan = economy.Load(0)
 
     def get_location(self):
         return self.location
@@ -25,12 +26,6 @@ class Player:
 
     def set_money(self, amount):
         self.money = amount
-
-    def get_loan(self):
-        return self.loan
-
-    def set_loan(self, loan):
-        self.loan = loan
 
     def add_product(self, prod, amount):
         self.inventory.add_product(prod, amount)
