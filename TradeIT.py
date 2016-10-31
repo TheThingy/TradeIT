@@ -12,6 +12,7 @@ class Game:
     def __init__(self):
         self.product_list = ProductList()
         self.city_list = CityList()
+        self.step = 0
         
         # Load JSON files
         for prod in json.loads(open("data/products.json", 'r', encoding="utf8").read()):
@@ -41,6 +42,8 @@ class Game:
                 print("Error! Please specify city to go to.")
                 return
             self.player.set_location(self.city_list.get_city(command_list[1]))
+            self.step += 1
+            print(self.step)
         if command_list[0] == "info":
             print("Name: %s" %(self.player.name))
             print("Money: %i" %(self.player.money))
