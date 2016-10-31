@@ -66,7 +66,7 @@ class Game:
                     print("Will transport the player to [city]")
                 if command_list[1] == "loan":
                     print("Usage: loan [number]")
-                    print("Postive number borrows, negative repays the amount")
+                    print("Positive number borrows, negative number repays the amount")
                     
 
     def mainloop(self):
