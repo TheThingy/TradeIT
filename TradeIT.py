@@ -58,8 +58,10 @@ class Game:
                 print("loan")
             elif len(command_list) > 1:
                 if command_list[1] == "info":
+                    print("Usage: info")
                     print("Shows information about your character")
                 if command_list[1] == "exit":
+                    print("Usage: exit")
                     print("Exits the game")
                 if command_list[1] == "goto":
                     print("Usage: goto [city]")
