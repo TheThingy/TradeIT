@@ -1,6 +1,7 @@
 # ! /usr/bin/env python3
 
 
+
 class Bank:
     def __init__(self, loan):
         self.loan = loan
@@ -10,4 +11,6 @@ class Bank:
 
     def set_loan(self, amount):
         self.loan = amount
-        
+
+    def intrest(self):
+        self.loan *= 0.05
