@@ -25,10 +25,17 @@ class Game:
             self.city_list.add_city(temp)
 
         self.player = Player("Per", self.city_list.get_city("Tromsø"))
+        self.player.set_money(20000)
+        self.player.loan.set_loan(80000)
         
     
     def do_step(self):
         self.step += 1
+        
+        # Pay for loan interest
+        self.player.add_money(-self.player.loan.get_interest())
+        
+        
 
     def mainloop(self):
         while True:

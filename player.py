@@ -10,7 +10,7 @@ class Player:
         self.location = city
         self.money = 0
         self.inventory = product.ProductList()
-        self.loan = economy.Load(0)
+        self.loan = economy.Loan(0, 0.05)
 
     def get_location(self):
         return self.location
@@ -26,6 +26,9 @@ class Player:
 
     def set_money(self, amount):
         self.money = amount
+    
+    def add_money(self, amount):
+        self.money += amount
 
     def add_product(self, prod, amount):
         self.inventory.add_product(prod, amount)
