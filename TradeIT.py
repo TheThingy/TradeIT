@@ -55,6 +55,7 @@ class Game:
                 print("info")
                 print("exit")
                 print("goto")
+                print("loan")
             elif len(command_list) > 1:
                 if command_list[1] == "info":
                     print("Shows information about your character")
@@ -63,6 +64,9 @@ class Game:
                 if command_list[1] == "goto":
                     print("Usage: goto [city]")
                     print("Will transport the player to [city]")
+                if command_list[1] == "loan":
+                    print("Usage: loan [number]")
+                    print("Postive number borrows, negative repays the amount")
                     
 
     def mainloop(self):
