@@ -49,7 +49,7 @@ class Game:
         elif command_list[0] == "exit":
             print("Quitting")
             sys.exit()
-        elif command_list[0] == "help":
+        elif command_list[0] == "help" or command_list[0] == "halp":
             if len(command_list) == 1:
                 print("Available commands:")
                 print("info")
