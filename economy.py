@@ -3,14 +3,18 @@
 
 
 class Loan:
-    def __init__(self, loan):
+    def __init__(self, loan, interest=0.05):
         self.loan = loan
+        self.interest = interest
 
     def get_loan(self):
         return self.loan
 
     def set_loan(self, amount):
         self.loan = amount
+        
+    def add_loan(self, amount):
+        self.loan += amount
 
-    def do_intrest(self):
-        self.loan *= 1.05
+    def get_interest(self):
+        return self.loan*self.interest
