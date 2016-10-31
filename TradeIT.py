@@ -45,6 +45,7 @@ class Game:
             print("Name: %s" %(self.player.name))
             print("Money: %i" %(self.player.money))
             print("Location: %s" %(self.player.location.city_name))
+            print("Loan: %i" %(self.player.loan))
         elif command_list[0] == "exit":
             print("Quitting")
             sys.exit()
