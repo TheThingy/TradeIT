@@ -32,3 +32,5 @@ build/
 *.rar
 *.tar
 *.zip
+
+__pycache__/*
