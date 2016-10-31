@@ -42,7 +42,7 @@ class Game:
                 print("Error! Please specify city to go to.")
                 return
             self.player.set_location(self.city_list.get_city(command_list[1]))
-            self.step += 1
+            self.do_step()
         if command_list[0] == "info":
             print("Name: %s" %(self.player.name))
             print("Money: %i" %(self.player.money))
@@ -73,9 +73,14 @@ class Game:
                     print("Positive number borrows, negative number repays the amount")
                     
 
+    def do_step(self):
+        self.step += 1
+        
+
     def mainloop(self):
         while True:
             self.decode_command(self.get_input())
+            
 
 
 
