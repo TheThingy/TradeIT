@@ -6,7 +6,8 @@ class Bank:
         self.loan = loan
 
     def get_loan(self):
-        return self.get_loan
+        return self.loan
 
     def set_loan(self, amount):
         self.loan = amount
+        

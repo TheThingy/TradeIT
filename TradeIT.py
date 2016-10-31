@@ -17,11 +17,11 @@ class Game:
         for prod in json.loads(open("data/products.json", 'r', encoding="utf8").read()):
             temp = Product(prod)
             self.product_list.add_product(temp)
-        
+
         for cty in json.loads(open("data/cities.json", 'r', encoding="utf8").read()):
             temp = City(cty)
             self.city_list.add_city(temp)
-       
+
         self.player = Player("Per", self.city_list.get_city("Tromsø"))
         
     

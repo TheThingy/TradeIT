@@ -17,7 +17,7 @@ class ProductList:
     def add_product(self, product, amount=1):   
         if self.contains(product.name):
             amount += self.plist[product.name][1]     
-        self.plist[product.name] = [product, amount] # Every product has a counter
+        self.plist[product.name] = [product, amount]  # Every product has a counter
         return True
 
     def remove_product(self, product):
@@ -50,5 +50,5 @@ class ProductList:
         return False
     
     def contains(self, name):
-        return name in self.plist # Return True if (name in self.plist), False otherwise
+        return name in self.plist  # Return True if (name in self.plist), False otherwise
 
