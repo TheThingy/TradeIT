@@ -43,7 +43,6 @@ class Game:
                 return
             self.player.set_location(self.city_list.get_city(command_list[1]))
             self.step += 1
-            print(self.step)
         if command_list[0] == "info":
             print("Name: %s" %(self.player.name))
             print("Money: %i" %(self.player.money))
