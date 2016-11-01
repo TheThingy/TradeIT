@@ -6,6 +6,7 @@ import sys
 from product import Product, ProductList
 from city import City, CityList
 from player import Player
+from shop import Shop
 import cmd
 
 
@@ -23,6 +24,8 @@ class Game:
         for cty in json.loads(open("data/cities.json", 'r', encoding="utf8").read()):
             temp = City(cty)
             self.city_list.add_city(temp)
+        
+        ## TODO: add shops
 
         self.player = Player("Per", self.city_list.get_city("Tromsø"))
         self.player.set_money(20000)
