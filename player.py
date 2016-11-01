@@ -5,10 +5,10 @@ import economy
 
 
 class Player:
-    def __init__(self, name, city):
+    def __init__(self, name, city, money=0):
         self.name = name
         self.location = city
-        self.money = 0
+        self.money = money
         self.inventory = product.ProductList()
         self.loan = economy.Loan(0, 0.05)
 
