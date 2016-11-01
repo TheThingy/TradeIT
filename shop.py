@@ -19,7 +19,7 @@ class ShopList(ProductList):
             return self.plist[name][2]
         return False
 
-    def set_product_amount(self, name, price:
+    def set_product_amount(self, name, price):
         if self.contains(name):
             self.plist["name"][2] = price
             return True
