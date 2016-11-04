@@ -63,7 +63,7 @@ class HLine(ScreenObject):
         if self.abs_length:
             length = self.length
         else:
-            length = round(self.length * width + 1)
+            length = int(self.length * width + 1)
         print(x, y, length)
         if self.full_width:
             lines[y] = [self.char for i in range(width)]
@@ -96,7 +96,7 @@ class VLine(ScreenObject):
         if self.abs_length:
             length = self.length
         else:
-            length = round(self.length * height +1)
+            length = int(self.length * height +1)
         print(x, y, length)
         if self.full_height:
             for i in range(height):
