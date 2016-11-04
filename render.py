@@ -14,6 +14,10 @@ class View:
         self.t_size = os.get_terminal_size()
     
     def render(self):
+        self.update()
+        self.populate_lines()
+        print("Terminal size: %i x %i" %(self.t_size[0], self.t_size[1]))
+        
         for obj in self.objects:
             obj.draw(self.lines)
         
@@ -45,7 +49,6 @@ class View:
 
 if __name__ == "__main__":
     v = View()
-    v.populate_lines(".")
     line = VLine(0.3, 0.2, length=0.5, char="X")
     v.add(line)
     line = HLine(0.3, 0.2, length=0.5, char="X")
@@ -54,4 +57,7 @@ if __name__ == "__main__":
     v.add(line)
     line = VLine(0.8, 0.2, length=0.5, char="X")
     v.add(line)
-    v.render()
+    while True:
+        v.render()
+        time.sleep(1)
+    
