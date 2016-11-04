@@ -2,18 +2,21 @@
 
 import os
 import time
-
+from screen_objects import *
 
 class View:
-    
     def __init__(self):
         self.lines = []
         self.update()
+        self.objects = []
     
     def update(self):
         self.t_size = os.get_terminal_size()
     
     def render(self):
+        for obj in self.objects:
+            obj.draw(self.lines)
+        
         for line in self.lines:
             print("".join(line))
         
@@ -31,11 +34,24 @@ class View:
     def insert_text(self, text, x, y):
         for pos in range(len(text)):
             self.insert(text[pos], x+pos, y)
+    
+    def add(self, obj):
+        if issubclass(obj.__class__, ScreenObject):
+            self.objects.append(obj)
+            return True
+        else:
+            return False
 
 
 if __name__ == "__main__":
     v = View()
     v.populate_lines(".")
-    v.insert("O", 10, 10)
-    v.insert_text("hello", 10, 11)
+    line = VLine(0.3, 0.2, length=0.5, char="X")
+    v.add(line)
+    line = HLine(0.3, 0.2, length=0.5, char="X")
+    v.add(line)
+    line = HLine(0.3, 0.7, length=0.5, char="X")
+    v.add(line)
+    line = VLine(0.8, 0.2, length=0.5, char="X")
+    v.add(line)
     v.render()
