@@ -35,12 +35,12 @@ class ScreenObject:
             y = round(y * height)
         
         if self.rel_corner == "top-right":
-            x = width - x
+            x = width - x - 1
         elif self.rel_corner == "bottom-left":
-            y = height - y
+            y = height - y - 1
         elif self.rel_corner == "bottom-right":
-            x = width - x
-            y = height - y
+            x = width - x - 1
+            y = height - y - 1
         
         return x, y
             
@@ -210,4 +210,30 @@ class Text(ScreenObject):
                 lines[y][x+i] = self.text[i]
             except IndexError:
                 pass
-            
+
+
+class Input(ScreenObject):
+    """A field for getting input from user"""
+    
+    def __init__(self, x, y, prompt, abs_pos=False, rel_corner="bottom-left"):
+        super().__init__(x, y, abs_pos, rel_corner)
+        
+        self.prompt = prompt
+    
+    def draw(self, lines):
+        length = len(self.prompt)
+        width = len(lines[0])
+        height = len(lines)
+        
+        x, y = self.get_coords(width, height)
+        print(x, y)
+        for i in range(length):
+            try:
+                lines[y][x+i] = self.prompt[i]
+            except IndexError:
+                pass
+        
+        try:
+            lines[y][x+length+1] = "input"
+        except IndexError:
+            pass
