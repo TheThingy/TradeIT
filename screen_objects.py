@@ -89,7 +89,6 @@ class Line(ScreenObject):
         y = y0
         for x in range(x0, x1):
             real_x, real_y = self.switch_from_octant_zero(octant, x, y)
-            print(x, y, real_x, real_y)
             try:
                 lines[real_y][real_x] = self.char
             except IndexError:

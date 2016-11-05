@@ -17,7 +17,7 @@ class View:
     def render(self):
         self.update()
         self.populate_lines()
-        print("Terminal size: %i x %i" %(self.t_size[0], self.t_size[1]))
+        #print("Terminal size: %i x %i" %(self.t_size[0], self.t_size[1]))
         
         for obj in self.objects:
             obj.draw(self.lines)
