@@ -22,8 +22,10 @@ class ScreenObject:
         self.abs_pos = abs_pos
         self.rel_corner = rel_corner
     
-    def get_startpos(self, width, height, x=None, y=None):
-        """Returns start position of object based on attributes"""
+    def get_coords(self, width, height, x=None, y=None):
+        """Returns start position of object based on attributes
+        If x and y == None, use self.x and self.y.
+        """
         if x == None or y == None:
             x = self.x
             y = self.y
@@ -47,74 +49,119 @@ class ScreenObject:
 class Line(ScreenObject):
     """A general line from (x0, y0) to (x1, y1)"""
     
-    def __init__(self, x0, y0, x1, y1, abs_pos=False, rel_corner="top-left"):
-        pass
-
-class HLine(ScreenObject):
-    """A horizontal line object"""
-    
-    def __init__(self, x, y, char="-", length=0, full_width=False, 
-                 abs_pos=False, rel_corner="top-left", abs_length=False):
-        super().__init__(x, y, abs_pos, rel_corner)
+    def __init__(self, x0, y0, x1, y1, abs_pos=False, rel_corner="top-left", char="O"):
+        super().__init__(x0, y0, abs_pos, rel_corner)
         
+        self.x1, self.y1 = x1, y1
         self.char = char
-        self.length = length
-        self.full_width = full_width
-        self.abs_length = abs_length
     
     def draw(self, lines):
+        """When this function is called, it draws the object onto lines
+        Read https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm for algorithm
+        """
         width = len(lines[0])
         height = len(lines)
-        x, y = self.get_startpos(width, height)
+        x0, y0 = self.get_coords(width, height)
+        x1, y1 = self.get_coords(width, height, self.x1, self.y1)
         
-        if self.abs_length:
-            length = self.length
-        else:
-            length = int(self.length * width + 1)
-        print(x, y, length)
-        if self.full_width:
-            lines[y] = [self.char for i in range(width)]
-        else:
+        dx = x1 - x0
+        dy = y1 - y0
+        
+        # For horizontal or vertical lines
+        if dy == 0:
+            self.draw_hline(lines, x0, y0, x1, y1)
+            return
+        if dx == 0:
+            self.draw_vline(lines, x0, y0, x1, y1)
+            return
+        
+        #x1, y1 = dx, dy
+        
+        octant = self.find_octant(dx, dy)
+        x0, y0 = self.switch_to_octant_zero(octant, x0, y0)
+        x1, y1 = self.switch_to_octant_zero(octant, x1, y1)
+        
+        # Recalculate dx and dy for new coordinates
+        dx = x1 - x0
+        dy = y1 - y0
+        
+        D = 2*dy - dx
+        y = y0
+        for x in range(x0, x1):
+            real_x, real_y = self.switch_from_octant_zero(octant, x, y)
+            print(x, y, real_x, real_y)
             try:
-                for i in range(length):
-                    lines[y][x+i] = self.char
+                lines[real_y][real_x] = self.char
             except IndexError:
-                # IndexError raised if length surpasses screen size
+                # IndexError raised if coordinates outside of lines
                 pass
-
-
-class VLine(ScreenObject):
-    """A vertical line object"""
+            
+            if D >= 0:
+                y = y + 1
+                D = D - dx
+            D = D + dy
     
-    def __init__(self, x, y, char="|", length=0, full_height=False,
-                 abs_pos=False, rel_corner="top-left", abs_length=False):
-        super().__init__(x, y, abs_pos, rel_corner)
-        
-        self.char = char
-        self.length = length
-        self.full_height = full_height
-        self.abs_length = abs_length
+    def draw_hline(self, lines, x0, y0, x1, y1):
+        if x1 > x0: d = 1
+        else: d = -1
+        try:
+            for x in range(x0, x1+d, d):
+                lines[y0][x] = self.char
+        except IndexError:
+            pass
     
-    def draw(self, lines):
-        width = len(lines[0])
-        height = len(lines)
-        x, y = self.get_startpos(width, height)
-        
-        if self.abs_length:
-            length = self.length
-        else:
-            length = int(self.length * height +1)
-        print(x, y, length)
-        if self.full_height:
-            for i in range(height):
-                lines[i][x] = self.char
-        else:
-            try:
-                for i in range(length):
-                    lines[y+i][x] = self.char
-            except IndexError:
-                pass
-
-
+    def draw_vline(self, lines, x0, y0, x1, y1):
+        if y1 > y0: d = 1
+        else: d = -1
+        try:
+            for y in range(y0, y1+d, d):
+                lines[y][x0] = self.char
+        except IndexError:
+            pass
+    
+    def find_octant(self, x, y):
+        """Find what octant (x, y) is in"""
+        if x > 0 and y > 0:
+            if x >= y: 
+                return 0 # First octant
+            else:
+                return 1 # Second octant
+        if x < 0 and y > 0:
+            if y > -x:
+                return 2 # Third octant
+            else:
+                return 3 # Fourth octant
+        if x < 0 and y < 0:
+            if -x > -y:
+                return 4 # Fifth octant
+            else:
+                return 5 # Sixth octant
+        if x > 0 and y < 0:
+            if -y > x:
+                return 6 # Seventh octant
+            else:
+                return 7 # Eight octant
+    
+    def switch_to_octant_zero(self, octant, x, y):
+        """Switches (x, y) from current octant to first octant"""
+        if octant == 0: return x, y
+        if octant == 1: return y, x
+        if octant == 2: return y, -x
+        if octant == 3: return -x, y
+        if octant == 4: return -x, -y
+        if octant == 5: return -y, -x
+        if octant == 6: return -y, x
+        if octant == 7: return x, -y
+    
+    def switch_from_octant_zero(self, octant, x, y):
+        """Switches (x, y) from first octant to original octant"""
+        if octant == 0: return x, y
+        if octant == 1: return y, x
+        if octant == 2: return -y, x
+        if octant == 3: return -x, y
+        if octant == 4: return -x, -y
+        if octant == 5: return -y, -x
+        if octant == 6: return y, -x
+        if octant == 7: return x, -y
 
 

@@ -49,13 +49,19 @@ class View:
 
 if __name__ == "__main__":
     v = View()
-    line = VLine(0.3, 0.2, length=0.5, char="X")
+    line = Line(0.3, 0.2, 0.3, 0.7, char="X")
     v.add(line)
-    line = HLine(0.3, 0.2, length=0.5, char="X")
+    line = Line(0.3, 0.2, 0.8, 0.2, char="X")
     v.add(line)
-    line = HLine(0.3, 0.7, length=0.5, char="X")
+    line = Line(0.3, 0.7, 0.8, 0.7, char="X")
     v.add(line)
-    line = VLine(0.8, 0.2, length=0.5, char="X")
+    line = Line(0.8, 0.2, 0.8, 0.7, char="X")
+    v.add(line)
+    line = Line(0.8, 0.7, 0.3, 0.2, char="X")
+    v.add(line)
+    line = Line(0.8, 0.2, 0.3, 0.7, char="X")
+    v.add(line)
+    line = Line(2, 2, 8, 8, char="O", abs_pos=True)
     v.add(line)
     while True:
         v.render()
