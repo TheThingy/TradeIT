@@ -5,6 +5,7 @@ import economy
 
 
 class Player:
+    """A player class containing relevant attributes and methods"""
     def __init__(self, name, city, money=0):
         self.name = name
         self.location = city

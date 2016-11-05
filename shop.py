@@ -5,6 +5,7 @@ from player import Player
 
 
 class ShopList(ProductList):
+    """A class used for containing a list of Shops"""
     def __init__(self):
         super().__init__() # not sure if ".__init__()" is needed
         
@@ -26,6 +27,7 @@ class ShopList(ProductList):
         return False
 
 class Shop(Player): # class Shop extends class Player
+    """A class used for a shop, extends Player."""
     def __init__(self, city):
         super().__init__("shop", city)
         

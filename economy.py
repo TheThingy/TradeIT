@@ -3,6 +3,7 @@
 
 
 class Loan:
+    """Class for information about loan"""
     def __init__(self, loan, interest=0.05):
         self.loan = loan
         self.interest = interest

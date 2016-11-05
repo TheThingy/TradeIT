@@ -37,6 +37,7 @@ class Game:
         self.init_screen_objects()
         
     def init_screen_objects(self):
+        """Create screen objects"""
         self.money_field = so.Text(0.1, 0.1, self.player.money)
         self.view.add(self.money_field)
         
@@ -44,12 +45,14 @@ class Game:
         self.view.add(self.input)
     
     def do_step(self):
+        """Execute step operations"""
         self.step += 1
         
         # Pay for loan interest
         self.player.add_money(-self.player.loan.get_interest())
         
     def mainloop(self):
+        """Start main loop"""
         while True:
             self.view.render()
             

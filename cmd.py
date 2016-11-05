@@ -3,6 +3,7 @@ import sys
 
 
 def decode_command(game, command):
+    """Decode command and do action based on command"""
     command_list = command.split()
     
     if command_list[0] == "goto":
@@ -43,6 +44,7 @@ def decode_command(game, command):
 
 
 def get_prompt(game):
+    """Returns prompt used for input"""
     prompt = str(game.player.name)
     prompt += "@"
     prompt += str(game.player.location.city_name)

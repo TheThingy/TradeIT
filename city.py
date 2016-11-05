@@ -1,10 +1,12 @@
 #! /usr/bin/env python3
 
 class City:
+    """A class for city"""
     def __init__(self, city_name):
         self.city_name = city_name
 
 class CityList:
+    """A class for containing cities"""
     def __init__(self):
         self.clist = {}
 

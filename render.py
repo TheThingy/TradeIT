@@ -6,16 +6,21 @@ import time
 from screen_objects import *
 
 class View:
+    """View class for containing objects on terminal"""
     def __init__(self):
         self.lines = []
-        self.update()
+        self.refresh_terminal_size()
         self.objects = []
     
-    def update(self):
+    def refresh_terminal_size(self):
+        """Update attribute with terminal size"""
         self.t_size = shutil.get_terminal_size()
     
     def render(self):
-        self.update()
+        """Update terminal size, redraw every object, and print the view.
+        Will return input from user if Input object exists.
+        """
+        self.refresh_terminal_size()
         self.populate_lines()
         #print("Terminal size: %i x %i" %(self.t_size[0], self.t_size[1]))
         
@@ -31,14 +36,24 @@ class View:
             print() # print newline
         
     def populate_lines(self, char=" "):
+        """Recreate self.lines based on terminal size"""
         self.lines = [[char for x in range(self.t_size.columns)] for y in range(self.t_size.lines)]
     
     def add(self, obj):
+        """Add new object to be showed on view. Will return result"""
         if issubclass(obj.__class__, ScreenObject):
             self.objects.append(obj)
             return True
         else:
             return False
+    
+    def remove(self, obj):
+        """Remove object from view. Will return result"""
+        if obj in self.objects:
+            self.objects.remove(obj)
+            return True
+        return False
+        
 
 
 if __name__ == "__main__":
