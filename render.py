@@ -23,7 +23,12 @@ class View:
             obj.draw(self.lines)
         
         for line in self.lines:
-            print("".join(line))
+            for char in line:
+                if char != "input":
+                    print(char, end="")
+                else:
+                    return input()
+            print() # print newline
         
     def populate_lines(self, char=" "):
         self.lines = [[char for x in range(self.t_size.columns)] for y in range(self.t_size.lines)]
@@ -56,6 +61,8 @@ if __name__ == "__main__":
     v.add(rect)
     text = Text(0.15, 0.15, "Hello, World")
     v.add(text)
+    inp = Input(0.5, 0, "test$")
+    v.add(inp)
     while True:
         v.render()
         time.sleep(1)
