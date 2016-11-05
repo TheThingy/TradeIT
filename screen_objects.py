@@ -164,6 +164,8 @@ class Line(ScreenObject):
         if octant == 6: return y, -x
         if octant == 7: return x, -y
 
+
+
 class Rect(ScreenObject):
     """A rectangle with corners defined by (x0, y0) and (x1, y1)"""
     
@@ -186,3 +188,27 @@ class Rect(ScreenObject):
     def draw(self, lines):
         for line in self.lines:
             line.draw(lines)
+
+
+
+class Text(ScreenObject):
+    """A text field"""
+    
+    def __init__(self, x, y, text, abs_pos=False, rel_corner="top-left"):
+        super().__init__(x, y, abs_pos, rel_corner)
+        
+        self.text = text
+    
+    def draw(self, lines):
+        length = len(self.text)
+        width = len(lines[0])
+        height = len(lines)
+        
+        x, y = self.get_coords(width, height)
+        
+        for i in range(length):
+            try:
+                lines[y][x+i] = self.text[i]
+            except IndexError:
+                pass
+            

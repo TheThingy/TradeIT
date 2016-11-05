@@ -65,6 +65,8 @@ if __name__ == "__main__":
     v.add(line)
     rect = Rect(0.1, 0.1, 0.9, 0.9, char="I")
     v.add(rect)
+    text = Text(0.15, 0.15, "Hello, World")
+    v.add(text)
     while True:
         v.render()
         time.sleep(1)
