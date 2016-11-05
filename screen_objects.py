@@ -226,7 +226,7 @@ class Input(ScreenObject):
         height = len(lines)
         
         x, y = self.get_coords(width, height)
-        print(x, y)
+        
         for i in range(length):
             try:
                 lines[y][x+i] = self.prompt[i]
