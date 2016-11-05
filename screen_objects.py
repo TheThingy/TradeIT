@@ -164,4 +164,25 @@ class Line(ScreenObject):
         if octant == 6: return y, -x
         if octant == 7: return x, -y
 
-
+class Rect(ScreenObject):
+    """A rectangle with corners defined by (x0, y0) and (x1, y1)"""
+    
+    def __init__(self, x0, y0, x1, y1, abs_pos=False, rel_corner="top-left", char="O"):
+        super().__init__(x0, y0, abs_pos, rel_corner)
+        
+        self.x1, self.y1 = x1, y1
+        self.char = char
+        self.lines = []
+        
+        # Define lines
+        line_coords = [(x0, y0, x1, y0),
+                       (x1, y0, x1, y1),
+                       (x1, y1, x0, y1),
+                       (x0, y1, x0, y0)]
+        for c in line_coords:
+            line = Line(c[0], c[1], c[2], c[3], abs_pos, rel_corner, char)
+            self.lines.append(line)
+        
+    def draw(self, lines):
+        for line in self.lines:
+            line.draw(lines)

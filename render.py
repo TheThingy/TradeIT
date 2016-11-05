@@ -63,6 +63,8 @@ if __name__ == "__main__":
     v.add(line)
     line = Line(2, 2, 8, 8, char="O", abs_pos=True)
     v.add(line)
+    rect = Rect(0.1, 0.1, 0.9, 0.9, char="I")
+    v.add(rect)
     while True:
         v.render()
         time.sleep(1)
