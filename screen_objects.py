@@ -217,7 +217,7 @@ class Input(ScreenObject):
     Should should be located at bottom (rel_corner at bottom and y = 0)
     """
     
-    def __init__(self, x, y=0, prompt, abs_pos=False, rel_corner="bottom-left"):
+    def __init__(self, x, y, prompt, abs_pos=False, rel_corner="bottom-left"):
         super().__init__(x, y, abs_pos, rel_corner)
         
         self.prompt = str(prompt)
