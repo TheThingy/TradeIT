@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 
 import os
+import shutil
 import time
 from screen_objects import *
 
@@ -11,7 +12,7 @@ class View:
         self.objects = []
     
     def update(self):
-        self.t_size = os.get_terminal_size()
+        self.t_size = shutil.get_terminal_size()
     
     def render(self):
         self.update()
