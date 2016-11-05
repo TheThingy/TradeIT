@@ -25,20 +25,8 @@ class View:
         for line in self.lines:
             print("".join(line))
         
-    def populate_lines(self, char="."):
+    def populate_lines(self, char=" "):
         self.lines = [[char for x in range(self.t_size.columns)] for y in range(self.t_size.lines)]
-    
-    def insert(self, char, x, y):
-        try:
-            self.lines[y][x] = char
-        except IndexError:
-            # If x or y coordinates is bigger than window
-            # TODO: consider doing something
-            pass
-    
-    def insert_text(self, text, x, y):
-        for pos in range(len(text)):
-            self.insert(text[pos], x+pos, y)
     
     def add(self, obj):
         if issubclass(obj.__class__, ScreenObject):
