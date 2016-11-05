@@ -22,14 +22,15 @@ class ScreenObject:
         self.abs_pos = abs_pos
         self.rel_corner = rel_corner
     
-    def get_startpos(self, width, height):
+    def get_startpos(self, width, height, x=None, y=None):
         """Returns start position of object based on attributes"""
-        if self.abs_pos:
+        if x == None or y == None:
             x = self.x
             y = self.y
-        else:
-            x = round(self.x * width)
-            y = round(self.y * height)
+        
+        if not self.abs_pos:
+            x = round(x * width)
+            y = round(y * height)
         
         if self.rel_corner == "top-right":
             x = width - x
@@ -42,6 +43,12 @@ class ScreenObject:
         return x, y
             
 
+
+class Line(ScreenObject):
+    """A general line from (x0, y0) to (x1, y1)"""
+    
+    def __init__(self, x0, y0, x1, y1, abs_pos=False, rel_corner="top-left"):
+        pass
 
 class HLine(ScreenObject):
     """A horizontal line object"""
