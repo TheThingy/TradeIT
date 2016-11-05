@@ -42,9 +42,9 @@ def decode_command(game, command):
 
 
 
-def get_input(game):
+def get_prompt(game):
     prompt = str(game.player.name)
     prompt += "@"
     prompt += str(game.player.location.city_name)
     prompt += "$ "
-    return input(prompt)
+    return prompt

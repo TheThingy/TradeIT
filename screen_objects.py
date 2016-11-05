@@ -196,7 +196,7 @@ class Text(ScreenObject):
     def __init__(self, x, y, text, abs_pos=False, rel_corner="top-left"):
         super().__init__(x, y, abs_pos, rel_corner)
         
-        self.text = text
+        self.text = str(text)
     
     def draw(self, lines):
         length = len(self.text)
@@ -218,7 +218,7 @@ class Input(ScreenObject):
     def __init__(self, x, y, prompt, abs_pos=False, rel_corner="bottom-left"):
         super().__init__(x, y, abs_pos, rel_corner)
         
-        self.prompt = prompt
+        self.prompt = str(prompt)
     
     def draw(self, lines):
         length = len(self.prompt)

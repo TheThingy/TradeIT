@@ -7,6 +7,8 @@ from product import Product, ProductList
 from city import City, CityList
 from player import Player
 from shop import Shop
+import screen_objects as so
+from render import View
 import cmd
 
 
@@ -31,6 +33,15 @@ class Game:
         self.player.set_money(20000)
         self.player.loan.set_loan(80000)
         
+        self.view = View()
+        self.init_screen_objects()
+        
+    def init_screen_objects(self):
+        self.money_field = so.Text(0.1, 0.1, self.player.money)
+        self.view.add(self.money_field)
+        
+        self.input = so.Input(0, 0, cmd.get_prompt(self))
+        self.view.add(self.input)
     
     def do_step(self):
         self.step += 1
@@ -38,11 +49,9 @@ class Game:
         # Pay for loan interest
         self.player.add_money(-self.player.loan.get_interest())
         
-        
-
     def mainloop(self):
         while True:
-            cmd.decode_command(self, cmd.get_input(self))
+            self.view.render()
             
 
 
