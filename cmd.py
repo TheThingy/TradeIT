@@ -21,8 +21,7 @@ def decode_command(game, command):
         return infolist
 
     elif command_list[0] == "exit":
-        exitlist = ["Quitting"]
-        return exitlist, sys.exit()
+        sys.exit()
 
     elif command_list[0] in ["help", "halp", "hjelp"]:
         if len(command_list) == 1:
