@@ -56,6 +56,7 @@ class Game:
         """Start main loop"""
         while True:
             self.view.render()
+            cmd.decode_command()
             
 
 

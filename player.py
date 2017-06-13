@@ -38,5 +38,3 @@ class Player:
         amount = self.inventory.get_product_amount(prod.name) - amount
         self.inventory.set_product_amount(prod.name, amount)
 
-def nub():
-    pass
