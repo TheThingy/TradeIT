@@ -40,9 +40,19 @@ class Game:
         """Create screen objects"""
         self.money_field = so.Text(0.1, 0.1, self.player.money)
         self.view.add(self.money_field)
+
+        self.output1 = so.Text(0, 3, "", abs_pos=False, rel_corner="bottom-left")
+        self.view.add(self.output1)
+
+        self.output2 = so.Text(0, 2, "", abs_pos=False, rel_corner="bottom-left")
+        self.view.add(self.output1)
+
+        self.output3 = so.Text(0, 1, "", abs_pos=False, rel_corner="bottom-left")
+        self.view.add(self.output1)
         
         self.input = so.Input(0, 0, cmd.get_prompt(self))
         self.view.add(self.input)
+
 
     
     def do_step(self):
@@ -56,7 +66,8 @@ class Game:
         """Start main loop"""
         while True:
             command = self.view.render()
-            cmd.decode_command(self, command())
+            result = cmd.decode_command(self, command)
+            self.output1.text =
 
 
 
