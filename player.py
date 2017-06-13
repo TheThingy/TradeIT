@@ -39,3 +39,4 @@ class Player:
         self.inventory.set_product_amount(prod.name, amount)
 
 def nub():
+    pass
