@@ -29,16 +29,16 @@ def decode_command(game, command):
             return helplist
         else:
             if command_list[1] == "info":
-                hilist = ["Usage: info", "Shows information about your character"]
+                hilist = ["Usage: info", "Shows information about your character", "", ""]
                 return hilist
             if command_list[1] == "exit":
-                helist = ["Usage: exit", "Exits the game"]
+                helist = ["Usage: exit", "Exits the game", "", ""]
                 return helist
             if command_list[1] == "goto":
-                hglist = ["Usage: goto [city]", "Will transport the player to [city]"]
+                hglist = ["Usage: goto [city]", "Will transport the player to [city]", "", ""]
                 return hglist
             if command_list[1] == "loan":
-                hllist = ["Usage: loan [number]", "Positive number borrows, negative number repays the amount"]
+                hllist = ["Usage: loan [number]", "Positive number borrows, negative number repays the amount", "", ""]
                 return hllist
 
 
