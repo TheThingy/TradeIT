@@ -43,6 +43,7 @@ class Game:
         
         self.input = so.Input(0, 0, cmd.get_prompt(self))
         self.view.add(self.input)
+
     
     def do_step(self):
         """Execute step operations"""

@@ -13,33 +13,34 @@ def decode_command(game, command):
         game.player.set_location(game.city_list.get_city(command_list[1]))
         game.do_step()
     elif command_list[0] == "info":
-        print("Name: %s" %(game.player.name))
-        print("Money: %i" %(game.player.money))
-        print("Location: %s" %(game.player.location.city_name))
-        print("Loan: %i" %(game.player.loan))
+        infolist = ["Name: %s" %(game.player.name),
+                    "Money: %i" %(game.player.money),
+                    "Location: %s" % (game.player.location.city_name),
+                    "Loan: %i" % (game.player.loan)
+                ]
+        return infolist
+
     elif command_list[0] == "exit":
-        print("Quitting")
-        sys.exit()
+        exitlist = ["Quitting"]
+        return exitlist, sys.exit()
+
     elif command_list[0] in ["help", "halp", "hjelp"]:
         if len(command_list) == 1:
-            print("Available commands:")
-            print("info")
-            print("exit")
-            print("goto")
-            print("loan")
+            helplist = ["Available commands:", "info", "exit", "goto", "loan"]
+            return helplist
         else:
             if command_list[1] == "info":
-                print("Usage: info")
-                print("Shows information about your character")
+                hilist = ["Usage: info", "Shows information about your character"]
+                return hilist
             if command_list[1] == "exit":
-                print("Usage: exit")
-                print("Exits the game")
+                helist = ["Usage: exit", "Exits the game"]
+                return helist
             if command_list[1] == "goto":
-                print("Usage: goto [city]")
-                print("Will transport the player to [city]")
+                hglist = ["Usage: goto [city]", "Will transport the player to [city]"]
+                return hglist
             if command_list[1] == "loan":
-                print("Usage: loan [number]")
-                print("Positive number borrows, negative number repays the amount")
+                hllist = ["Usage: loan [number]", "Positive number borrows, negative number repays the amount"]
+                return hllist
 
 
 
