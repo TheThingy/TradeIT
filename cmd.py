@@ -16,7 +16,7 @@ def decode_command(game, command):
         infolist = ["Name: %s" %(game.player.name),
                     "Money: %i" %(game.player.money),
                     "Location: %s" % (game.player.location.city_name),
-                    "Loan: %i" % (game.player.loan)
+                    "Loan: %i" % (game.player.loan.get_loan())
                 ]
         return infolist
 
@@ -25,7 +25,7 @@ def decode_command(game, command):
 
     elif command_list[0] in ["help", "halp", "hjelp"]:
         if len(command_list) == 1:
-            helplist = ["Available commands:", "info", "exit", "goto", "loan"]
+            helplist = ["info", "exit", "goto", "loan"]
             return helplist
         else:
             if command_list[1] == "info":

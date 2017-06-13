@@ -41,14 +41,17 @@ class Game:
         self.money_field = so.Text(0.1, 0.1, self.player.money)
         self.view.add(self.money_field)
 
-        self.output1 = so.Text(0, 3, "", abs_pos=True, rel_corner="bottom-left")
+        self.output1 = so.Text(0, 4, "", abs_pos=True, rel_corner="bottom-left")
         self.view.add(self.output1)
 
-        self.output2 = so.Text(0, 2, "", abs_pos=True, rel_corner="bottom-left")
+        self.output2 = so.Text(0, 3, "", abs_pos=True, rel_corner="bottom-left")
         self.view.add(self.output2)
 
-        self.output3 = so.Text(0, 1, "", abs_pos=True, rel_corner="bottom-left")
+        self.output3 = so.Text(0, 2, "", abs_pos=True, rel_corner="bottom-left")
         self.view.add(self.output3)
+
+        self.output4 = so.Text(0, 1, "", abs_pos=True, rel_corner="bottom-left")
+        self.view.add(self.output4)
         
         self.input = so.Input(0, 0, cmd.get_prompt(self))
         self.view.add(self.input)
@@ -70,6 +73,7 @@ class Game:
             self.output1.text = result[0]
             self.output2.text = result[1]
             self.output3.text = result[2]
+            self.output4.text = result[3]
 
 
 
