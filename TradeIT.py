@@ -41,13 +41,13 @@ class Game:
         self.money_field = so.Text(0.1, 0.1, self.player.money)
         self.view.add(self.money_field)
 
-        self.output1 = so.Text(0, 3, "", abs_pos=False, rel_corner="bottom-left")
+        self.output1 = so.Text(0, 3, "", abs_pos=True, rel_corner="bottom-left")
         self.view.add(self.output1)
 
-        self.output2 = so.Text(0, 2, "", abs_pos=False, rel_corner="bottom-left")
+        self.output2 = so.Text(0, 2, "", abs_pos=True, rel_corner="bottom-left")
         self.view.add(self.output1)
 
-        self.output3 = so.Text(0, 1, "", abs_pos=False, rel_corner="bottom-left")
+        self.output3 = so.Text(0, 1, "", abs_pos=True, rel_corner="bottom-left")
         self.view.add(self.output1)
         
         self.input = so.Input(0, 0, cmd.get_prompt(self))
@@ -67,7 +67,9 @@ class Game:
         while True:
             command = self.view.render()
             result = cmd.decode_command(self, command)
-            self.output1.text =
+            self.output1.text = result[0]
+            self.output2.text = result[1]
+            self.output3.text = result[2]
 
 
 
