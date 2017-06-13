@@ -45,10 +45,10 @@ class Game:
         self.view.add(self.output1)
 
         self.output2 = so.Text(0, 2, "", abs_pos=True, rel_corner="bottom-left")
-        self.view.add(self.output1)
+        self.view.add(self.output2)
 
         self.output3 = so.Text(0, 1, "", abs_pos=True, rel_corner="bottom-left")
-        self.view.add(self.output1)
+        self.view.add(self.output3)
         
         self.input = so.Input(0, 0, cmd.get_prompt(self))
         self.view.add(self.input)
