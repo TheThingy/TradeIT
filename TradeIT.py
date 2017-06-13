@@ -55,9 +55,9 @@ class Game:
     def mainloop(self):
         """Start main loop"""
         while True:
-            self.view.render()
-            cmd.decode_command(self, View.render())
-            
+            command = self.view.render()
+            cmd.decode_command(self, command())
+
 
 
 
