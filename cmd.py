@@ -17,7 +17,7 @@ def decode_command(game, command):
                     "Money: %i" %(game.player.money),
                     "Location: %s" % (game.player.location.city_name),
                     "Loan: %i" % (game.player.loan.get_loan())
-                ]
+                    ]
         return infolist
 
     elif command_list[0] == "exit":
@@ -40,6 +40,14 @@ def decode_command(game, command):
             if command_list[1] == "loan":
                 hllist = ["Usage: loan [number]", "Positive number borrows, negative number repays the amount", "", ""]
                 return hllist
+
+    elif command_list[0] == "buy":
+        buy_list = ["This", "will allow", "you", "to buy things"]
+        return buy_list
+
+    elif command_list[0] == "sell":
+        sell_list = ["This", "will allow", "you", "to sell things"]
+        return sell_list
 
 
 
